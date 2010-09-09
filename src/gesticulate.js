@@ -7,7 +7,7 @@ var Gesticulate = {
 Gesticulate.setup = function() {
   var events = ['touchstart', 'touchmove', 'touchend'];
   for(var i = 0; i < events.length; i++) {
-    document.addEventListener(events[i], Gesticulate, false);
+    document.addEventListener(events[i], this, false);
   }
 }
 
