@@ -1,0 +1,21 @@
+= Gesticulate
+
+Describe and recognize multitouch gestures in JavaScript
+
+== Requirements
+
+* An iTouch device
+
+== Usage
+
+== Known issues
+
+See http://github.com/benedikt/gesticulate/issues
+
+== Repository
+
+See http://github.com/benedikt/gesticulate and feel free to fork it!
+
+== Copyright
+
+Copyright (c) 2010 Benedikt Deicke. See LICENSE for details.
