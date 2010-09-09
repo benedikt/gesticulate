@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Experiment 1</title>
+  <script type="text/javascript" src="../build/gesticulate.js"></script>
+  <style type="text/css">
+    #thingy {
+      display: block;
+      width: 500px;
+      height: 140px;
+      background: #ccc;
+      line-height: 140px;
+      color: #fff;
+      font-size: 30px;
+      font-family: sans-serif;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+<div id="thingy">Swipe from left to right</div>
+
+<script type="text/javascript">
+
+var element = document.getElementById('thingy');
+
+Gesticulate.setup();
+
+Gesticulate.registerGesture('swipe', function(gesture) {
+  gesture.finger().moves({ from: 'left', to: 'right' });
+});
+
+Gesticulate.observe(element, 'swipe', function() {
+  element.innerHTML = "Yay! You swiped from left to right!";
+});
+
+</script>
+</body>
+</html>

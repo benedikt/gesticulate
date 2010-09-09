@@ -1,5 +1,18 @@
 describe('Gesticulate', function() {
 
+  describe('.setup', function() {
+    it('should be defined', function() {
+      expect(Gesticulate.setup).toBeDefined();
+    });
+
+    it('should register event listeners for events', function() {
+      spyOn(document, 'addEventListener');
+      Gesticulate.setup();
+      expect(document.addEventListener).toHaveBeenCalled();
+      expect(document.addEventListener.callCount).toBe(3);
+    });
+  });
+
   describe('.registerGesture', function() {
 
     it('should be defined', function() {
@@ -45,5 +58,11 @@ describe('Gesticulate', function() {
     });
 
   });
+
+  describe('._handleEvent', function() {
+    it('should be defined', function() {
+      expect(Gesticulate.handleEvent).toBeDefined();
+    });
+  })
 
 })

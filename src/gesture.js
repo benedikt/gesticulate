@@ -1,5 +1,11 @@
+//= require "movement"
+
 Gesticulate.Gesture = function(name) {
   this.name = name;
 
-  this.update = function(event) {}
+  this._update = function(event) {}
+
+  this.finger = function() {
+    return new Gesticulate.Movement();
+  }
 }

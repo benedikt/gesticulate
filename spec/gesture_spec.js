@@ -14,14 +14,24 @@ describe('Gesticulate.Gesture', function() {
     });
   });
 
-  describe('.update', function() {
+  describe('#_update', function() {
     it('should be defined', function() {
-      expect(gesture.update).toBeDefined();
+      expect(gesture._update).toBeDefined();
     });
 
     it('should expect an event as argument', function() {
-      expect(gesture.update.length).toBe(1);
+      expect(gesture._update.length).toBe(1);
     })
+  });
+
+  describe('#finger', function() {
+    it('should be defined', function() {
+      expect(gesture.finger).toBeDefined();
+    });
+
+    it('should return an instance of Gesticulate.Movement', function() {
+      expect(gesture.finger() instanceof Gesticulate.Movement).toBeTruthy();
+    });
   });
 
 
