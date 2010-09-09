@@ -59,7 +59,7 @@ describe('Gesticulate', function() {
 
   });
 
-  describe('._handleEvent', function() {
+  describe('.handleEvent', function() {
     it('should be defined', function() {
       expect(Gesticulate.handleEvent).toBeDefined();
     });
