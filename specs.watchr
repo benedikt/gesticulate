@@ -11,5 +11,7 @@ def run_specs
 end
 
 def reload_safari!
-  system %q{osascript -e 'tell app "Safari"' -e 'do JavaScript "window.location.reload();" in first document' -e 'end tell' &> /dev/null}
+  system %q{ps -xc | grep -sq Safari && osascript -e 'tell app "Safari"' \
+            -e 'do JavaScript "window.location.reload();" in first document' \
+            -e 'end tell' &> /dev/null}
 end
