@@ -1,11 +1,15 @@
 //= require "movement"
 
-Gesticulate.Gesture = function(name) {
-  this.name = name;
+Gesticulate.Gesture = Class.create({
 
-  this._update = function(event) {}
+  initialize: function(name) {
+    this.name = name;
+  },
 
-  this.finger = function() {
+  _update: function(event) {},
+
+  finger: function() {
     return new Gesticulate.Movement();
   }
-}
+
+});

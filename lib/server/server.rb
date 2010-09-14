@@ -24,7 +24,7 @@ class ServerApp < Sinatra::Base
   get '/build/*' do
     content_type 'text/javascript'
     secretary = Sprockets::Secretary.new(
-      :load_path    => [File.join(settings.public, 'lib')],
+      :load_path    => [File.join(settings.root, 'lib')],
       :source_files => [File.join(settings.public, params[:splat])]
     )
     secretary.concatenation.to_s

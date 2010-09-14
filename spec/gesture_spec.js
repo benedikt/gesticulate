@@ -5,10 +5,6 @@ describe('Gesticulate.Gesture', function() {
   });
 
   describe('initializer', function() {
-    it('should require a name', function() {
-      expect(Gesticulate.Gesture.length).toBe(1);
-    });
-
     it('should set the gestures name', function() {
       expect(gesture.name).toBe('test');
     });
