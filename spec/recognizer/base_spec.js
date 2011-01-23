@@ -8,23 +8,13 @@ describe('Gesticulate.Recognizer.Base', function() {
   describe('initializer', function() {
   });
 
-  describe('#_update', function() {
+  describe('#update', function() {
     it('should be defined', function() {
-      expect(recognizer._update).toBeDefined();
+      expect(recognizer.update).toBeDefined();
     });
 
     it('should expect an event as argument', function() {
-      expect(recognizer._update.length).toBe(1);
+      expect(recognizer.update.length).toBe(1);
     })
-  });
-
-  describe('#isCompleted', function() {
-    it('should be defined', function() {
-      expect(recognizer.isCompleted).toBeDefined();
-    });
-
-    it('should return false by default', function() {
-      expect(recognizer.isCompleted()).toBe(false);
-    });
   });
 })

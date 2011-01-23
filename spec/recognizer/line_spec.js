@@ -8,13 +8,13 @@ describe('Gesticulate.Recognizer.Line', function() {
   describe('initializer', function() {
   });
 
-  describe('#_update', function() {
+  describe('#update', function() {
     it('should be defined', function() {
-      expect(recognizer._update).toBeDefined();
+      expect(recognizer.update).toBeDefined();
     });
 
     it('should expect an event as argument', function() {
-      expect(recognizer._update.length).toBe(1);
+      expect(recognizer.update.length).toBe(1);
     })
   });
 
