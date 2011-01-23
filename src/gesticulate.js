@@ -12,7 +12,7 @@ Object.extend(Gesticulate, {
   },
 
   registerGesture: function(name, block) {
-    var gesture = new Gesticulate.Gesture();
+    var gesture = new Gesticulate.Language.Gesture();
     block.call(this, gesture);
     this.__gestures[name] = gesture;
   },
@@ -30,4 +30,5 @@ Object.extend(Gesticulate, {
   }
 });
 
-//= require "gesture"
+//= require "recognizer"
+//= require "language"

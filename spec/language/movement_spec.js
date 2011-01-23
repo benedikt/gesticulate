@@ -1,7 +1,7 @@
-describe('Gesticulate.Movement', function() {
+describe('Gesticulate.Language.Movement', function() {
 
   beforeEach(function() {
-    movement = new Gesticulate.Movement();
+    movement = new Gesticulate.Language.Movement();
   });
 
   describe('#moves', function() {
@@ -31,21 +31,5 @@ describe('Gesticulate.Movement', function() {
     });
 
   });
-
-  describe('#isCompleted', function() {
-    it('should be defined', function() {
-      expect(movement.isCompleted).toBeDefined();
-    });
-
-    it('should return false by default', function() {
-      expect(movement.isCompleted()).toBe(false);
-    });
-  });
-
-  describe('#_update', function() {
-    it('should be defined', function() {
-      expect(movement._update).toBeDefined();
-    })
-  })
 
 });

@@ -1,4 +1,4 @@
-Gesticulate.Movement = Class.create((function(){
+Gesticulate.Language.Movement = Class.create((function(){
 
   function validateOptions(options) {
     if(!options['from'] || !options['to']) {
@@ -14,19 +14,9 @@ Gesticulate.Movement = Class.create((function(){
     this.options = options;
   }
 
-  function isCompleted() {
-    return false;
-  }
-
-  function _update(event) {
-
-  }
-
   return {
     moves: moves,
-    move: moves,
-    isCompleted: isCompleted,
-    _update: _update
+    move: moves
   }
 
 })());
