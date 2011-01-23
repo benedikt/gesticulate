@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Experiment 3</title>
+  <script type="text/javascript" src="../build/gesticulate.js"></script>
+  <style type="text/css">
+    #thingy {
+      display: block;
+      width: 500px;
+      height: 300px;
+      background: #ccc;
+      line-height: 300px;
+      color: #fff;
+      font-size: 30px;
+      font-family: sans-serif;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+<div id="thingy">Swipe from left to right</div>
+
+<script type="text/javascript">
+
+function preventDefault(event) { event.preventDefault(); }
+document.addEventListener('touchstart', preventDefault, false);
+document.addEventListener('touchmove', 	preventDefault, false);
+document.addEventListener('touchend', 	preventDefault, false);
+
+var element = document.getElementById('thingy');
+
+var recognizer = null;
+
+element.addEventListener('touchstart', function() {
+  recognizer = new Gesticulate.Recognizer.Line(0, 0, element.getWidth(), 0);
+});
+
+element.addEventListener('touchmove', function(event) {
+  var layout = element.getLayout();
+      x = event.changedTouches[0].pageX - layout.get('left'),
+      y = event.changedTouches[0].pageY - layout.get('top');
+  recognizer.update(new Gesticulate.Geometry.Point(x, y));
+});
+
+element.addEventListener('touchend', function() {
+  var original = element.innerHTML;
+  if(recognizer.recognize()) element.update("Yay! Recognized it! :)");
+  else element.update("Nope. Didn't recognize it! :(");
+  (function() { element.update(original); }).delay(1);
+  recognizer = null;
+});
+
+</script>
+</body>
+</html>
