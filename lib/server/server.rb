@@ -85,6 +85,16 @@ jasmine.getEnv().execute();
 <html>
 <head>
 <title>Gesticulate Examples</title>
+<style type="text/css">
+  a {
+    float: left;
+    background: #ccc;
+    color: #000;
+    padding: 10px;
+    margin: 10px;
+    font-family: sans-serif;
+  }
+</style>
 </head>
 <body>
 
