@@ -1,4 +1,5 @@
 describe('Gesticulate.Recognizer.Base', function() {
+  var recognizer;
 
   beforeEach(function() {
     recognizer = new Gesticulate.Recognizer.Base();

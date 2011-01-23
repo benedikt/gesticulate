@@ -1,4 +1,5 @@
 describe('Gesticulate.Recognizer.Line', function() {
+  var recognizer;
 
   beforeEach(function() {
     recognizer = new Gesticulate.Recognizer.Line();

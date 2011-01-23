@@ -1,4 +1,5 @@
 describe('Gesticulate.Language.Gesture', function() {
+  var gesture;
 
   beforeEach(function() {
     gesture = new Gesticulate.Language.Gesture('test');

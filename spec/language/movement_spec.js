@@ -1,4 +1,5 @@
 describe('Gesticulate.Language.Movement', function() {
+  var movement;
 
   beforeEach(function() {
     movement = new Gesticulate.Language.Movement();
