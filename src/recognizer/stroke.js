@@ -1,6 +1,6 @@
 Gesticulate.Recognizer.Stroke = Class.create(Gesticulate.Recognizer.Base, function () {
   var points = [],
-      template = [],
+      template = null,
       threshold = 0.2;
 
   function distanceToTemplate() {
