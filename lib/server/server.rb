@@ -30,6 +30,10 @@ class ServerApp < Sinatra::Base
     secretary.concatenation.to_s
   end
 
+  get '/examples/?' do
+    erb :examples
+  end
+
   get '/examples/*' do
     File.read(File.join(settings.root, 'examples', params[:splat]))
   end
@@ -75,11 +79,37 @@ jasmine.getEnv().execute();
 </html>)
   end
 
+  template :examples do
+    %Q(<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>Gesticulate Examples</title>
+</head>
+<body>
+
+<% example_files.each do |file| %>
+  <a href="/<%= file %>"><%= file %></a>
+<% end %>
+
+</body>
+</html>)
+  end
+
   helpers do 
     def spec_files
       [].tap do |files|
         root = Pathname.new(settings.root)
         Pathname.glob(File.join(root, "spec", "**", "*.js")).each do |p|
+          files << p.relative_path_from(root) if p.file?
+        end
+      end
+    end
+
+    def example_files
+      [].tap do |files|
+        root = Pathname.new(settings.root)
+        Pathname.glob(File.join(root, "examples", "*.html")).each do |p|
           files << p.relative_path_from(root) if p.file?
         end
       end
