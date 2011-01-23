@@ -6,10 +6,15 @@ Gesticulate.Geometry.Circle = Class.create(function () {
     },
 
     interpolate: function(steps) {
+      steps -= 1;
+
       var points = [],
-          frac = (2 * Math.PI) / steps;
-      for(var i = 0; i < steps; i++) {
-        points.push(new Gesticulate.Geometry.Point(Math.sin(frac * i) * this.radius, Math.cos(frac * i) * this.radius));
+          frac = (2 * Math.PI) / steps,
+          x, y;
+      for(var i = 0; i <= steps; i++) {
+        x = Math.sin(frac * i) * +this.radius + this.center.x;
+        y = Math.cos(frac * i) * -this.radius + this.center.y;
+        points.push(new Gesticulate.Geometry.Point(x, y));
       }
       return points;
     },
