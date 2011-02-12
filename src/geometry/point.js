@@ -21,6 +21,15 @@ Gesticulate.Geometry.Point = Class.create(function () {
 
     boundingBox: function() {
       return new Gesticulate.Geometry.Rectangle(this.x, this.y, 0, 0);
+    },
+
+    normalized: function() {
+      var magnitude = this.magnitude();
+      return new Gesticulate.Geometry.Point(this.x / magnitude, this.y / magnitude);
+    },
+
+    magnitude: function() {
+      return Math.sqrt(this.x * this.x + this.y * this.y);
     }
   }
 }());

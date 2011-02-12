@@ -11,10 +11,11 @@ Gesticulate.Geometry.Circle = Class.create(function () {
       var points = [],
           frac = (2 * Math.PI) / steps,
           x, y;
+
       for(var i = 0; i <= steps; i++) {
         x = Math.sin(frac * i) * +this.radius + this.center.x;
         y = Math.cos(frac * i) * -this.radius + this.center.y;
-        points.push(new Gesticulate.Geometry.Point(x, y));
+        points.push(new Gesticulate.Geometry.Point(Math.round(x), Math.round(y)));
       }
       return points;
     },

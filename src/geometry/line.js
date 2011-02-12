@@ -19,6 +19,12 @@ Gesticulate.Geometry.Line = Class.create(function () {
       return points;
     },
 
+    length: function() {
+      var delta_x = this.to.x - this.from.x,
+          delta_y = this.to.y - this.from.y;
+      return Math.sqrt(delta_x * delta_x + delta_y * delta_y);
+    },
+
     boundingBox: function() {
       return new Gesticulate.Geometry.Rectangle(this.from.x, this.from.y, this.to.x - this.from.x, this.to.y - this.from.y);
     }
