@@ -62,6 +62,8 @@ class ServerApp < Sinatra::Base
 <script type="text/javascript" src="lib/jasmine/jasmine.js"></script>
 <script type="text/javascript" src="lib/jasmine/jasmine-html.js"></script>
 
+<script type="text/javascript" src="lib/prototype/prototype.js"></script>
+
 <script type="text/javascript" src="build/gesticulate.js"></script>
 
 <% spec_files.each do |file| %>

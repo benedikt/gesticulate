@@ -1,10 +1,8 @@
-//= require <prototype/prototype>
-
 var Gesticulate = Class.create();
 
-//= require "geometry"
-//= require "recognizer"
-//= require "language"
+//= require "gesticulate/geometry"
+//= require "gesticulate/recognizer"
+//= require "gesticulate/language"
 
 Object.extend(Gesticulate, {
   __gestures: {},
