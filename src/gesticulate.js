@@ -67,5 +67,6 @@ var Gesticulate = function() {
 //= require "gesticulate/geometry"
 //= require "gesticulate/recognizer"
 //= require "gesticulate/touch"
+//= require "gesticulate/touch_mapper"
 //= require "gesticulate/gesture"
 //= require "gesticulate/language"

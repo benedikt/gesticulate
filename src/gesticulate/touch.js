@@ -1,5 +1,4 @@
 Gesticulate.Touch = function (x, y, identifier) {
-  this.x = x;
-  this.y = y;
+  this.position = new Gesticulate.Geometry.Point(x, y);
   this.identifier = identifier;
 };

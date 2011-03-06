@@ -1,20 +1,19 @@
 Gesticulate.Gesture = function (recognizer) {
+  var touchMapper = new Gesticulate.TouchMapper(recognizer, 'horizontal');
   this.recognizer = recognizer;
 
   this.update = function(touches) {
-    if(touches.length != this.recognizer.length) return;
-
     for(var i = 0; i < touches.length; i++) {
-      this.recognizer[i].update(new Gesticulate.Geometry.Point(touches[i].x, touches[i].y));
+      if(!touchMapper.hasTouch(touches[i])) touchMapper.addTouch(touches[i]);
+      touchMapper.recognizerFor(touches[i]).update(touches[i].position);
     }
   };
 
   this.recognize = function() {
     for(var i = 0; i < this.recognizer.length; i++) {
-      console.info("Checking: "+ i);
       if(!this.recognizer[i].recognize()) {
-        //return false;
-      } else if(this.recognizer.length == i+1) {
+        return false;
+      } else if(this.recognizer.length == i + 1) {
         return true;
       }
     }
