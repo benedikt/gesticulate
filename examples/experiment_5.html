@@ -26,20 +26,19 @@
 
 function preventDefault(event) { event.preventDefault(); }
 document.addEventListener('touchstart', preventDefault, false);
-document.addEventListener('touchmove', 	preventDefault, false);
-document.addEventListener('touchend', 	preventDefault, false);
+document.addEventListener('touchmove',  preventDefault, false);
+document.addEventListener('touchend',   preventDefault, false);
 
 var element = document.getElementById('thingy');
 
 Gesticulate.setup();
 
-
-
 element.addEventListener('touchstart', function() {
-  recognizers = [];
-  recognizers.push(new Gesticulate.Recognizer.Line(0, 0, 0, element.getHeight()));
-  recognizers.push(new Gesticulate.Recognizer.Line(0, 0, 0, element.getHeight()));
-  Gesticulate.__gestures['example'] = new Gesticulate.Gesture(recognizers);
+  Gesticulate.__gestures['example'] = new Gesticulate.Gesture([
+    new Gesticulate.Recognizer.Line(0, 0, 0, element.getHeight()),
+    new Gesticulate.Recognizer.Line(0, 0, 0, element.getHeight()),
+    new Gesticulate.Recognizer.Line(0, 0, 0, element.getHeight())
+  ]);
 });
 
 element.addEventListener('touchend', function(event) {
