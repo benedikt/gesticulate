@@ -9,6 +9,13 @@ Gesticulate.Gesture = function (recognizer) {
     }
   };
 
+  this.reset = function() {
+    touchMapper.reset();
+    for(var i = 0; i < this.recognizer.length; i++) {
+      this.recognizer[i].reset();
+    }
+  };
+
   this.recognize = function() {
     for(var i = 0; i < this.recognizer.length; i++) {
       if(!this.recognizer[i].recognize()) {

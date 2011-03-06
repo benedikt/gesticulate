@@ -23,6 +23,13 @@ Gesticulate.TouchMapper = function(recognizers, mode) {
     }
   }
 
+  this.reset = function() {
+    for(var i = 0; i < touches.length; i++) {
+      delete mapping[touches[i].identifier];
+    }
+    touches.splice(0, touches.length);
+  };
+
   this.isSatisfied = function() {
     return recognizers.length == touches.length;
   };
@@ -32,18 +39,20 @@ Gesticulate.TouchMapper = function(recognizers, mode) {
   };
 
   this.hasTouch = function(touch) {
-    return !!mapping[touch.identifier];
+    for(var i = 0; i < touches.length; i++) {
+      if(touches[i].identifier == touch.identifier) {
+        return true;
+      }
+    }
+    return false;
   };
 
   this.addTouch = function(touch) {
-    if(this.hasTouch(touch)) {
-      for(var i = 0; i < touches.length; i++) {
-        if(touches[i].identifier == touch.identifier) {
-          touches[i] = touch;
-        }
+    for(var i = 0; i <= touches.length; i++) {
+      if(i == touches.length || touches[i].identifier == touch.identifier) {
+        touches[i] = touch;
+        break;
       }
-    } else {
-      touches.push(touch);
     }
 
     if(this.isSatisfied()) { setupMapping(); }

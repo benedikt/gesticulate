@@ -33,13 +33,12 @@ var element = document.getElementById('thingy');
 
 Gesticulate.setup();
 
-element.addEventListener('touchstart', function() {
-  Gesticulate.__gestures['example'] = new Gesticulate.Gesture([
-    new Gesticulate.Recognizer.Line(0, 0, 0, element.getHeight()),
-    new Gesticulate.Recognizer.Line(0, 0, 0, element.getHeight()),
-    new Gesticulate.Recognizer.Line(0, 0, 0, element.getHeight())
-  ]);
-});
+
+Gesticulate.__gestures['example'] = new Gesticulate.Gesture([
+  new Gesticulate.Recognizer.Line(0, 0, 0, element.getHeight()),
+  new Gesticulate.Recognizer.Line(0, 0, 0, element.getHeight()),
+  new Gesticulate.Recognizer.Line(0, 0, 0, element.getHeight())
+]);
 
 element.addEventListener('touchend', function(event) {
   if(event.touches.length > 0) return;
@@ -48,7 +47,6 @@ element.addEventListener('touchend', function(event) {
   if(Gesticulate.__gestures['example'].recognize()) element.update("Yay! Recognized it! :)");
   else element.update("Nope. Didn't recognize it! :(");
   (function() { element.update(original); }).delay(1);
-  recognizers = [];
 });
 
 

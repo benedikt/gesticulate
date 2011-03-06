@@ -3,7 +3,7 @@ Gesticulate.Recognizer.Stroke = function (_template, _threshold) {
 
   var points = [],
       template = _template,
-      threshold = _threshold || 0.2;
+      threshold = _threshold || 0.3;
 
   function distanceToTemplate() {
     var distance = 0,
@@ -32,7 +32,7 @@ Gesticulate.Recognizer.Stroke = function (_template, _threshold) {
   };
 
   this.reset = function() {
-    points = [];
+    points.splice(0, points.length);
   };
 };
 
