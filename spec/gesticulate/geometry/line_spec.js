@@ -5,9 +5,9 @@ describe('Gesticulate.Geometry.Line', function() {
     line = new Gesticulate.Geometry.Line(0, 0, 100, 40);
   });
 
-  describe('#initialize', function() {
+  describe('constructor', function() {
      it('should expect a start x, start y, end x and end y as an arguments', function() {
-       expect(line.initialize.length).toBe(4);
+       expect(Gesticulate.Geometry.Line.length).toBe(4);
      });
   });
 

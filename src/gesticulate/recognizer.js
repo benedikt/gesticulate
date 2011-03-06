@@ -1,4 +1,4 @@
-Gesticulate.Recognizer = Class.create();
+Gesticulate.Recognizer = {};
 
 //= require "recognizer/base"
 //= require "recognizer/stroke"

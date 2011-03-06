@@ -1,8 +1,5 @@
-Gesticulate.Touch = Class.create(function () {
-  return {
-    initialize: function(x, y) {
-      this.x = x;
-      this.y = y;
-    }
-  }
-}());
+Gesticulate.Touch = function (x, y, identifier) {
+  this.x = x;
+  this.y = y;
+  this.identifier = identifier;
+};

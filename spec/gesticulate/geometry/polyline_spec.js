@@ -6,7 +6,7 @@ describe('Gesticulate.Geometry.Polyline', function() {
     polyline = new Gesticulate.Geometry.Polyline(0, 0, 20, 10, 30, 30);
   });
 
-  describe('#initialize', function() {
+  describe('constructor', function() {
      it('should expect a multiple of 2', function() {
        expect(function() {
           new Gesticulate.Geometry.Polyline(1, 1, 2, 2, 3);

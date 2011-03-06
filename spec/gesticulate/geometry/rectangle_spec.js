@@ -7,7 +7,7 @@ describe('Gesticulate.Geometry.Rectangle', function() {
 
   describe('#initialize', function() {
      it('should expect x, y, width and height as arguments', function() {
-       expect(rectangle.initialize.length).toBe(4);
+       expect(Gesticulate.Geometry.Rectangle.length).toBe(4);
      });
   });
 

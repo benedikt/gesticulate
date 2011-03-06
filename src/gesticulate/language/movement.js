@@ -1,7 +1,7 @@
-Gesticulate.Language.Movement = Class.create((function(){
+Gesticulate.Language.Movement = function() {
 
   function validateOptions(options) {
-    if(!options['from'] || !options['to']) {
+    if(!options.from || !options.to) {
       throw({
         name: 'MissingOptionException',
         message: 'You have to provide a from and to option.'
@@ -14,9 +14,6 @@ Gesticulate.Language.Movement = Class.create((function(){
     this.options = options;
   }
 
-  return {
-    moves: moves,
-    move: moves
-  }
-
-})());
+  this.moves = moves;
+  this.move = moves;
+};

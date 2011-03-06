@@ -5,9 +5,9 @@ describe('Gesticulate.Geometry.Circle', function() {
     circle = new Gesticulate.Geometry.Circle(100, 100, 50);
   });
 
-  describe('#initialize', function() {
+  describe('constructor', function() {
      it('should expect x, y and radius as arguments', function() {
-       expect(circle.initialize.length).toBe(3);
+       expect(Gesticulate.Geometry.Circle.length).toBe(3);
      });
   });
 

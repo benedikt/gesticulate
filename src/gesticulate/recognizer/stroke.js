@@ -1,7 +1,7 @@
-Gesticulate.Recognizer.Stroke = Class.create(Gesticulate.Recognizer.Base, function () {
+Gesticulate.Recognizer.Stroke = function (_template, _threshold) {
   var points = [],
-      template = null,
-      threshold = 0.2;
+      template = _template,
+      threshold = _threshold || 0.2;
 
   function distanceToTemplate() {
     var distance = 0,
@@ -20,20 +20,12 @@ Gesticulate.Recognizer.Stroke = Class.create(Gesticulate.Recognizer.Base, functi
     }
   }
 
-  return {
-    initialize: function(_template, _threshold) {
-      points = [];
-      template = _template;
-      threshold = _threshold || threshold;
-    },
+  this.update = function(point) {
+    points.push(point);
+  };
 
-    update: function(point) {
-      points.push(point);
-    },
-
-    recognize: function() {
+  this.recognize = function() {
       normalizePoints();
       return distanceToTemplate() < (threshold * template.boundingBox().diagonale());
-    }
-  }
-}());
+  };
+};

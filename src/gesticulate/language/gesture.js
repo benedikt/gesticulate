@@ -1,11 +1,7 @@
-Gesticulate.Language.Gesture = Class.create({
+Gesticulate.Language.Gesture = function(name) {
+  this.name = name;
 
-  initialize: function(name) {
-    this.name = name;
-  },
-
-  finger: function() {
+  this.finger = function() {
     return new Gesticulate.Language.Movement();
-  }
-
-});
+  };
+};

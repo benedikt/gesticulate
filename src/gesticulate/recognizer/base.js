@@ -1,7 +1,4 @@
-Gesticulate.Recognizer.Base = Class.create(function () {
-  return {
-    initialize: function() {},
-    update: function(point) {},
-    recognize: function() {}
-  }
-}());
+Gesticulate.Recognizer.Base = function () {
+  this.update = function(point) {};
+  this.recognize = function() {};
+};

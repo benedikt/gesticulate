@@ -1,11 +1,4 @@
-var Gesticulate = Class.create();
-
-//= require "gesticulate/geometry"
-//= require "gesticulate/recognizer"
-//= require "gesticulate/touch"
-//= require "gesticulate/language"
-
-Object.extend(Gesticulate, function() {
+var Gesticulate = function() {
   var mouseDown = false;
 
   return {
@@ -15,7 +8,7 @@ Object.extend(Gesticulate, function() {
       var events = ['touchstart', 'touchmove', 'touchend'];
 
       if(options) {
-        if(options['simulate']) {
+        if(options.simulate) {
           events = events.concat('mousedown', 'mousemove', 'mouseup');
         }
       }
@@ -50,19 +43,29 @@ Object.extend(Gesticulate, function() {
           case 'mousedown':
             mouseDown = true;
           case 'mousemove':
-            if(mouseDown) touches = [new Gesticulate.Touch(event.pageX, event.pageY)];
+            if(mouseDown) touches = [new Gesticulate.Touch(event.pageX, event.pageY, 'mouse')];
         }
       } else if(/^touch(start|move|end)$/(event.type)) {
         touches = [];
         for(var i = 0; i < event.touches.length; i++) {
           var touch = event.touches[i];
-          touches.push(new Gesticulate.Touch(touch.pageX, touch.pageY));
+          touches.push(new Gesticulate.Touch(touch.pageX, touch.pageY, touch.identifier));
         }
       }
 
+
       if(touches) {
-        console.info(touches);
+        for(var gesture in this.__gestures) {
+          this.__gestures[gesture].update(touches);
+        }
       }
     }
-  }
-}());
+  };
+}();
+
+
+//= require "gesticulate/geometry"
+//= require "gesticulate/recognizer"
+//= require "gesticulate/touch"
+//= require "gesticulate/gesture"
+//= require "gesticulate/language"

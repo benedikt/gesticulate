@@ -5,9 +5,9 @@ describe('Gesticulate.Geometry.Point', function() {
     point = new Gesticulate.Geometry.Point(30, 40);
   });
 
-  describe('#initialize', function() {
+  describe('constructor', function() {
      it('should expect a x and y as arguments', function() {
-       expect(point.initialize.length).toBe(2);
+       expect(Gesticulate.Geometry.Point.length).toBe(2);
      });
   });
 
