@@ -1,5 +1,6 @@
 /**
- * class Gesticulate.Geometry
+ * Gesticulate.Geometry
+ * The package includes several Geometry types as well as geometry utility methods.
  **/
 Gesticulate.Geometry = function() {
   return {
