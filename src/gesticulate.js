@@ -87,7 +87,7 @@ var Gesticulate = function() {
       if(block instanceof Function) {
         gesture = new Gesticulate.Language.Gesture();
         block.call(this, gesture);
-        gestures[name] = gesture;
+        gestures[name] = gesture.build();
       }
     },
 
