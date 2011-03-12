@@ -38,6 +38,7 @@ Gesticulate.TouchMapper = function(recognizers, mode) {
   };
 
   this.recognizerFor = function(touch) {
+    if(!this.isSatisfied()) return nullRecognizer;
     return mapping[touch.identifier] || nullRecognizer;
   };
 
