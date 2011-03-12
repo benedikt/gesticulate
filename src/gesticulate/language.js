@@ -1,3 +1,6 @@
+/**
+ * Gesticulate.Language
+ **/
 Gesticulate.Language = {};
 
 //= require "language/gesture"

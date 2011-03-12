@@ -1,3 +1,13 @@
+/**
+ * class Gesticulate.Geometry.Circle
+ **/
+
+/**
+ * new Gesticulate.Geometry.Circle(x, y, r)
+ * - x (number): The center's x coordinate
+ * - y (number): The center's y coordinate
+ * - r (number): The circle's radius
+ **/
 Gesticulate.Geometry.Circle = function(x, y, r) {
   this.center = new Gesticulate.Geometry.Point(x, y);
   this.radius = r;

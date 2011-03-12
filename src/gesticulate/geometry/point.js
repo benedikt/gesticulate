@@ -1,3 +1,12 @@
+/**
+ * class Gesticulate.Geometry.Point
+ **/
+
+/**
+ * new Gesticulate.Geometry.Point(x, y)
+ * - x (number): The point's x coordinate
+ * - y (number): The point's y coordinate
+ **/
 Gesticulate.Geometry.Point = function (x, y) {
   this.x = x;
   this.y = y;

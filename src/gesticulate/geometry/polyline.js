@@ -1,3 +1,13 @@
+/**
+ * class Gesticulate.Geometry.Polyline
+ **/
+
+/**
+ * new Gesticulate.Geometry.Polyline(x1, y1 [, {...}])
+ * - points (Array): An array of Gesticulate.Geometry.Points
+ * - xn (number): At least one x coordinate
+ * - xn (number): At least one y coordinate 
+ **/
 Gesticulate.Geometry.Polyline = function () {
   this.points = [];
 

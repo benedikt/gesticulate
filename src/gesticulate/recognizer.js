@@ -1,3 +1,6 @@
+/**
+ * Gesticulate.Recognizer
+ **/
 Gesticulate.Recognizer = {};
 
 //= require "recognizer/base"

@@ -1,3 +1,6 @@
+/**
+ * class Gesticulate.Recognizer.Stroke < Gesticulate.Recognizer.Base
+ **/
 Gesticulate.Recognizer.Stroke = function (_template, _threshold) {
   Gesticulate.Recognizer.Base.apply(this);
 

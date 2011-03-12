@@ -26,11 +26,11 @@ end
 desc 'Generate the documentation'
 task :doc => :build do
   PDoc.run({
-    :source_files => Dir[File.join(File.dirname(__FILE__), 'build', 'gesticulate.js')],
+    :source_files => Dir[File.join(File.dirname(__FILE__), 'src', '**', '*.js')],
     :destination => File.join(File.dirname(__FILE__), 'doc'),
     :syntax_highlighter => :pygments,
     :markdown_parser => :bluecloth,
-    :pretty_urls => true,
+    :pretty_urls => false,
     :bust_cache => true,
     :name => 'Gesticulate',
     :home_url => 'https://benedikt.github.com/gesticulate',

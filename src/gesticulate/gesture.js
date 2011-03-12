@@ -1,3 +1,6 @@
+/**
+ * class Gesticulate.Gesture
+ **/
 Gesticulate.Gesture = function (recognizer) {
   var touchMapper = new Gesticulate.TouchMapper(recognizer, 'horizontal');
   this.recognizer = recognizer;

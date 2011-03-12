@@ -1,3 +1,6 @@
+/**
+ * class Gesticulate.Geometry.Rectangle
+ **/
 Gesticulate.Geometry.Rectangle = function (x, y, width, height) {
   this.position = new Gesticulate.Geometry.Point(x, y);
   this.width = width;

@@ -1,3 +1,14 @@
+/**
+ * class Gesticulate.Geometry.Line
+ **/
+
+/**
+ * new Gesticulate.Geometry.Line(from_x, from_y, to_x, to_y)
+ * - from_x (number): The line's start x coordinate
+ * - from_y (number): The line's start y coordinate
+ * - to_x (number): The line's end x coordinate
+ * - to_y (number): The line's end y coordinate
+ **/
 Gesticulate.Geometry.Line = function(from_x, from_y, to_x, to_y) {
   this.from = new Gesticulate.Geometry.Point(from_x, from_y);
   this.to = new Gesticulate.Geometry.Point(to_x, to_y);

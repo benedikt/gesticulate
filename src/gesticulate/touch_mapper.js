@@ -1,3 +1,6 @@
+/**
+ * class Gesticulate.TouchMapper
+ **/
 Gesticulate.TouchMapper = function(recognizers, mode) {
   var touches = [],
       mapping = {},
