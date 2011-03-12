@@ -6,7 +6,7 @@ Bundler.require(:default)
 task :default => :build
 
 desc 'Compiles the Javascripts using sprockets'
-task :build => :clean do
+task :build do
   `mkdir -p build`
   `bundle exec sprocketize -I lib -I src src/*.js > build/gesticulate.js`
 end
@@ -24,9 +24,10 @@ task :open do
 end
 
 desc 'Generate the documentation'
-task :doc => :build do
+task :doc do
   PDoc.run({
     :source_files => Dir[File.join(File.dirname(__FILE__), 'src', '**', '*.js')],
+    :index_page   => 'README.markdown',
     :destination => File.join(File.dirname(__FILE__), 'doc'),
     :syntax_highlighter => :pygments,
     :markdown_parser => :bluecloth,
@@ -39,7 +40,17 @@ task :doc => :build do
   })
 end
 
-desc 'Cleanup everything'
-task :clean do
+desc 'Cleanup documentation'
+task :clean_doc do
+  `rm -rf doc/* build/*`
+end
+
+desc 'Cleanup build'
+task :clean_build do
+  `rm -rf build/*`
+end
+
+desc 'Cleanup documentation'
+task :clean => [:clean_doc, :clean_build] do
   `rm -rf doc/* build/*`
 end
