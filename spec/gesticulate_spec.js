@@ -25,14 +25,6 @@ describe('Gesticulate', function() {
       });
     });
 
-    it('should store the gesture object with the given name', function() {
-      var obj = null;
-      Gesticulate.registerGesture('example', function(gesture) {
-        obj = gesture;
-      });
-      expect(Gesticulate.__gestures['example']).toBe(obj);
-    });
-
   });
 
   describe('.observe', function() {
@@ -59,10 +51,4 @@ describe('Gesticulate', function() {
 
   });
 
-  describe('.handleEvent', function() {
-    it('should be defined', function() {
-      expect(Gesticulate.handleEvent).toBeDefined();
-    });
-  })
-
-})
+});
