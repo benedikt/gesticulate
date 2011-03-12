@@ -28,7 +28,7 @@ describe('Gesticulate.Geometry.Point', function() {
         new Gesticulate.Geometry.Point(30, 40),
         new Gesticulate.Geometry.Point(30, 40),
         new Gesticulate.Geometry.Point(30, 40)
-      ];
+      ];      
       expect(point.interpolate(5)).toEqual(points);
     });
   });

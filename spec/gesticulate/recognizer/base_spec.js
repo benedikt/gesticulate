@@ -15,6 +15,6 @@ describe('Gesticulate.Recognizer.Base', function() {
 
     it('should expect an event as argument', function() {
       expect(recognizer.update.length).toBe(1);
-    })
+    });
   });
-})
+});
