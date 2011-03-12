@@ -1,13 +1,13 @@
 /**
  * class Gesticulate.Recognizer.Stroke < Gesticulate.Recognizer.Base
  **/
-Gesticulate.Recognizer.Stroke = function (_template, _threshold, options) {
+Gesticulate.Recognizer.Stroke = function (_template, _threshold, _options) {
   Gesticulate.Recognizer.Base.apply(this);
 
-  Gesticulate.Util.extend({
+  var options = Gesticulate.Util.extend({
     positionInvariant: true,
-    scaleInvariant: false
-  }, options || {});
+    scaleInvariant: true
+  }, _options || {});
 
   var points = [],
       template = _template,
@@ -32,7 +32,7 @@ Gesticulate.Recognizer.Stroke = function (_template, _threshold, options) {
 
   function normalizeScale() {
     var boundingBox = Gesticulate.Geometry.boundingBox(points),
-        scale = template.boundingBox.diagonale() / boundingBox.diagonale();
+        scale = template.boundingBox().diagonale() / boundingBox.diagonale();
 
     for(var i = 0; i < points.length; i++) {
       points[i].x *= scale;
