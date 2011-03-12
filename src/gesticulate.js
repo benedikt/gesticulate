@@ -98,7 +98,7 @@ var Gesticulate = function() {
   };
 }();
 
-
+//= require "gesticulate/util"
 //= require "gesticulate/geometry"
 //= require "gesticulate/recognizer"
 //= require "gesticulate/touch"
