@@ -2,8 +2,8 @@
 <html>
 <head>
   <title>Experiment 5</title>
-  <script type="text/javascript" src="../lib/prototype/prototype.js"></script>
-  <script type="text/javascript" src="../build/gesticulate.js"></script>
+  <script src="../lib/prototype/prototype.js"></script>
+  <script src="../build/gesticulate.js"></script>
   <style type="text/css">
     #thingy {
       display: block;
@@ -34,21 +34,18 @@ var element = document.getElementById('thingy');
 Gesticulate.setup();
 
 
-Gesticulate.__gestures['example'] = new Gesticulate.Gesture([
+Gesticulate.registerGesture('example', new Gesticulate.Gesture([
   new Gesticulate.Recognizer.Line(0, 0, 0, element.getHeight()),
   new Gesticulate.Recognizer.Line(0, 0, 0, element.getHeight()),
   new Gesticulate.Recognizer.Line(0, 0, 0, element.getHeight())
-]);
+]));
 
-element.addEventListener('touchend', function(event) {
-  if(event.touches.length > 0) return;
+var original = element.innerHTML;
 
-  var original = element.innerHTML;
-  if(Gesticulate.__gestures['example'].recognize()) element.update("Yay! Recognized it! :)");
-  else element.update("Nope. Didn't recognize it! :(");
+Gesticulate.observe(element, 'example', function(recognized) {
+  element.update(recognized ? "Yay! Recognized it! :)" : "Nope. Didn't recognize it! :(");
   (function() { element.update(original); }).delay(1);
 });
-
 
 </script>
 </body>

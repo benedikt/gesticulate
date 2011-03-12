@@ -69,31 +69,44 @@ var Gesticulate = function() {
       }
 
       for(var i = 0; i < events.length; i++) {
-        document.addEventListener(events[i], this, false);
+        document.addEventListener(events[i], handleEvent, false);
       }
     },
 
     /**
-     * Gesticulate.registerGesture(name, block) -> null
+     * Gesticulate.registerGesture(name, gesture) -> null
      **/
-    registerGesture: function(name, block) {
-      var gesture = new Gesticulate.Language.Gesture();
-      block.call(this, gesture);
+    registerGesture: function(name, gesture) {
       gestures[name] = gesture;
+    },
+
+    /**
+     * Gesticulate.buildGesture(name, block) -> null
+     **/
+    buildGesture: function(name, block) {
+      if(block instanceof Function) {
+        gesture = new Gesticulate.Language.Gesture();
+        block.call(this, gesture);
+        gestures[name] = gesture;
+      }
     },
 
     /**
      * Gesticulate.observe(element, name, handler) -> null
      **/
     observe: function(element, name, handler) {
-
+      var gesture = gestures[name];
+      element.addEventListener('touchend', function(event) {
+        if(event.touches.length === 0) {
+          handler(gesture.recognize());
+        }
+      });
     },
 
     /**
      * Gesticulate.fire(element, gesture) -> null
      **/
-    fire: function(element, gesture) {
-
+    fire: function(element, gesture, recognized) {
     }
   };
 }();
