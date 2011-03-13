@@ -21,7 +21,7 @@ Gesticulate.Geometry.Line = function(from_x, from_y, to_x, to_y) {
         frac_y = (this.to.y - this.from.y) / steps;
 
     for(var i = 0; i <= steps; i++) {
-      points.push(new Gesticulate.Geometry.Point(frac_x * i, frac_y * i));
+      points.push(new Gesticulate.Geometry.Point(this.from.x + frac_x * i, this.from.y + frac_y * i));
     }
 
     return points;
@@ -36,4 +36,33 @@ Gesticulate.Geometry.Line = function(from_x, from_y, to_x, to_y) {
   this.boundingBox = function() {
     return new Gesticulate.Geometry.Rectangle(this.from.x, this.from.y, this.to.x - this.from.x, this.to.y - this.from.y);
   };
+
+
+  /**
+   * Gesticulate.Geometry.Line#translate(delta_x, delta_y) -> this
+   **/
+  this.translate = function(delta_x, delta_y) {
+    this.from.translate(delta_x, delta_y);
+    this.to.translate(delta_x, delta_y);
+    return this;
+  };
+
+  /**
+   * Gesticulate.Geometry.Line#scale(scale) -> this
+   **/
+  this.scale = function(scale) {
+    this.from.scale(scale);
+    this.to.scale(scale);
+    return this;
+  };
+
+  /**
+   * Gesticulate.Geometry.Line#rotate(angle) -> this
+   **/
+  this.rotate = function(angle) {
+    this.from.rotate(angle);
+    this.to.rotate(angle);
+    return this;
+  };
+
 };

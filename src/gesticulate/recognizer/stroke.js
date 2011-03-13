@@ -7,57 +7,40 @@ Gesticulate.Recognizer.Stroke = function (_template, _threshold, _options) {
   var options = Gesticulate.Util.extend({
     positionInvariant: true,
     scaleInvariant: false,
-    rotationInvariant: false
+    rotationInvariant: true
   }, _options || {});
 
-  var points = [],
+  var polyline = new Gesticulate.Geometry.Polyline(),
       template = _template,
       threshold = _threshold || 0.3;
 
   var distanceToTemplate = function () {
-    var distance = 0,
-        interpolated = template.interpolate(points.length);
-    for(var i = 0; i < points.length; i++) {
-      distance += points[i].distanceTo(interpolated[i]);
-    }
-    return distance / points.length;
+    return polyline.similarityDistanceTo(template);
   };
 
   var normalizePositions = function () {
-    var boundingBox = Gesticulate.Geometry.boundingBox(points);
-    for(var i = 0; i < points.length; i++) {
-      points[i].x -= boundingBox.position.x;
-      points[i].y -= boundingBox.position.y;
-    }
+    var templateBox = template.boundingBox();
+    template.translate(-(templateBox.position.x + templateBox.width  / 2),
+                       -(templateBox.position.y + templateBox.height / 2));
+
+    var polylineBox = polyline.boundingBox();
+    polyline.translate(-(polylineBox.position.x + polylineBox.width  / 2),
+                       -(polylineBox.position.y + polylineBox.height / 2));
+
   };
 
   var normalizeScale = function () {
-    var boundingBox = Gesticulate.Geometry.boundingBox(points),
-        scale = template.boundingBox().diagonale() / boundingBox.diagonale();
-
-    for(var i = 0; i < points.length; i++) {
-      points[i].x *= scale;
-      points[i].y *= scale;
-    }
+    var boundingBox = polyline.boundingBox();
+    polyline.scale(template.boundingBox().diagonale() / boundingBox.diagonale());
   };
 
   var optimalRotation = function () {
-    var original_points = [],
+    var original_polyline = polyline.clone(),
         minimum = Infinity,
         rotation = 0;
 
-    for(var i = 0; i < points.length; i++) {
-      original_points[i] = points[i];
-      points[i] = new Gesticulate.Geometry.Point(points[i].x, points[i].y);
-    }
-
     for(var g = 0; g < 2 * Math.PI; g += 0.1) {
-      for(i = 0; i < points.length; i++) {
-        points[i].x = points[i].x * Math.cos(0.1) - points[i].y * Math.sin(0.1);
-        points[i].y = points[i].x * Math.sin(0.1) + points[i].y * Math.cos(0.1);
-      }
-
-      normalizePositions();
+      polyline.rotateAroundCenter(0.1);
 
       if(distanceToTemplate() < minimum) {
         rotation = g;
@@ -65,20 +48,15 @@ Gesticulate.Recognizer.Stroke = function (_template, _threshold, _options) {
       }
     }
 
-    for(i = 0; i < points.length; i++) {
-      points[i].x = original_points[i].x * Math.cos(rotation) - original_points[i].y * Math.sin(rotation);
-      points[i].y = original_points[i].x * Math.sin(rotation) + original_points[i].y * Math.cos(rotation);
-    }
-
-    normalizePositions();
+    polyline = original_polyline.rotateAroundCenter(rotation);
   };
 
   this.update = function(point) {
-    points.push(point);
+    polyline.addPoint(point);
   };
 
   this.recognize = function() {
-      if(options.positionInvariant) { normalizePositions(); }
+      if(options.positionInvariant || options.rotationInvariant) { normalizePositions(); }
       if(options.scaleInvariant) { normalizeScale(); }
       if(options.rotationInvariant) { optimalRotation(); }
 
@@ -86,7 +64,7 @@ Gesticulate.Recognizer.Stroke = function (_template, _threshold, _options) {
   };
 
   this.reset = function() {
-    points.splice(0, points.length);
+    polyline.removeAll();
   };
 };
 
