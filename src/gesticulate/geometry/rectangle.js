@@ -24,4 +24,30 @@ Gesticulate.Geometry.Rectangle = function (x, y, width, height) {
   this.boundingBox = function() {
     return this;
   };
+
+  /**
+   * Gesticulate.Geometry.Rectangle#translate(delta_x, delta_y) -> this
+   **/
+  this.translate = function(delta_x, delta_y) {
+    this.position.translate(delta_x, delta_y);
+    return this;
+  };
+
+  /**
+   * Gesticulate.Geometry.Rectangle#scale(scale) -> this
+   **/
+  this.scale = function(scale) {
+    this.position.scale(scale);
+    this.width  *= scale;
+    this.height *= scale;
+    return this;
+  };
+
+  /**
+   * Gesticulate.Geometry.Rectangle#rotate(angle) -> this
+   **/
+  this.rotate = function(angle) {
+    console.error("Rectangle rotation is not yet implemented.");
+    return this;
+  };
 };
