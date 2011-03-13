@@ -92,13 +92,17 @@ var Gesticulate = function() {
     },
 
     /**
-     * Gesticulate.observe(element, name, handler) -> null
+     * Gesticulate.observe(element, name, handler [, alwaysCallHandler]) -> null
      **/
-    observe: function(element, name, handler) {
+    observe: function(element, name, handler, alwaysCallHandler) {
       var gesture = gestures[name];
       element.addEventListener('touchend', function(event) {
         if(event.touches.length === 0) {
-          handler(gesture.recognize());
+          if (alwaysCallHandler) {
+            handler(gesture.recognize());
+          } else if(gesture.recognize()) {
+            handler(true);
+          }
         }
       });
     },
