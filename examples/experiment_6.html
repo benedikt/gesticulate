@@ -34,8 +34,9 @@ var element = document.getElementById('thingy');
 Gesticulate.setup();
 
 Gesticulate.buildGesture('example', function(gesture) {
-  gesture.finger().moves({ from: 'left', to: 'right' });
-  gesture.finger().moves({ from: 'left', to: 'right' });
+  //gesture.finger().moves({ from: 'left', to: 'right' });
+  //gesture.finger().moves({ from: 'left', to: 'right' });
+  gesture.finger().follows(0, 0, 100, 100, 200, 0);
 });
 
 var original = element.innerHTML;

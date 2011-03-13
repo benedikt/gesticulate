@@ -7,7 +7,7 @@ Gesticulate.Recognizer.Stroke = function (_template, _threshold, _options) {
   var options = Gesticulate.Util.extend({
     positionInvariant: true,
     scaleInvariant: false,
-    rotationInvariant: true
+    rotationInvariant: false
   }, _options || {});
 
   var polyline = new Gesticulate.Geometry.Polyline(),
