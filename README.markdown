@@ -14,20 +14,20 @@ This is just a sketch to gather ideas. Don't expect anything to work like descri
 
 Simple one finger gesture:
 
-    Gesticulate.registerGesture('swipe', function(gesture) {
+    Gesticulate.buildGesture('swipe', function(gesture) {
       gesture.finger().moves({ from: 'left', to: 'right' });
     });
 
 Simple two finger gesture:
 
-    Gesticulate.registerGesture('twoFingerSwipe', function(gesture) {
+    Gesticulate.buildGesture('twoFingerSwipe', function(gesture) {
       // There are no constraints yet.
       // It's possible to swipe one finger and then a second one.
       gesture.finger(0).moves({ from: 'left', to: 'right' });
       gesture.finger(1).moves({ from: 'left', to: 'right' });
 
       // Possible alternative:
-      gesture.finger([0, 1]).moves({ from: 'left', to: 'right });
+      gesture.fingers([0, 1]).move({ from: 'left', to: 'right });
     });
 
 ### Observing gestures
