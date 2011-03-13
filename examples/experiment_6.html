@@ -20,7 +20,7 @@
 </head>
 <body>
 
-<div id="thingy">Swipe with two fingers from top to bottom</div>
+<div id="thingy">Describe a V with one finger</div>
 
 <script type="text/javascript">
 
@@ -44,7 +44,7 @@ var original = element.innerHTML;
 Gesticulate.observe(element, 'example', function(recognized) {
   element.update(recognized ? "Yay! Recognized it! :)" : "Nope. Didn't recognize it! :(");
   (function() { element.update(original); }).delay(1);
-});
+}, true);
 
 </script>
 </body>
