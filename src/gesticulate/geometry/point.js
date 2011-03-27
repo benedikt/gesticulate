@@ -35,7 +35,7 @@ Gesticulate.Geometry.Point = Gesticulate.Geometry.Vector = function (x, y) {
     return new Gesticulate.Geometry.Point(this.x / magnitude, this.y / magnitude);
   };
 
-  this.magnitude = function() {
+  this.length = this.magnitude = function() {
     return Math.sqrt(this.x * this.x + this.y * this.y);
   };
 
