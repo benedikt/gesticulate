@@ -7,7 +7,7 @@
  * - x (number): The point's x coordinate
  * - y (number): The point's y coordinate
  **/
-Gesticulate.Geometry.Point = function (x, y) {
+Gesticulate.Geometry.Point = Gesticulate.Geometry.Vector = function (x, y) {
   var self = this;
   this.x = x;
   this.y = y;
