@@ -26,6 +26,16 @@ Gesticulate.Geometry = function() {
       }
 
       return new Gesticulate.Geometry.Rectangle(min_x, min_y, max_x - min_x, max_y - min_y);
+    },
+
+    point: function() {
+      if(arguments.length == 2) {
+        return new Gesticulate.Geometry.Point(arguments[0], arguments[1]);
+      } else if(arguments[0] instanceof Gesticulate.Geometry.Point) {
+        return arguments[0];
+      } else {
+        return null;
+      }
     }
   };
 }();
