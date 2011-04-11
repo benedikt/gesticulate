@@ -46,10 +46,9 @@ Gesticulate.Geometry.Point = Gesticulate.Geometry.Vector = function (x, y) {
   };
 
   this.rotate = function(angle) {
-    var x = this.x * Math.cos(angle) - this.y * Math.sin(angle),
-        y = this.x * Math.sin(angle) + this.y * Math.cos(angle);
-    this.x = x;
-    this.y = y;
+    var x = this.x, y = this.y;
+    this.x = x * Math.cos(angle) - y * Math.sin(angle);
+    this.y = x * Math.sin(angle) + y * Math.cos(angle);
     return this;
   };
 
