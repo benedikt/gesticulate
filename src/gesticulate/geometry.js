@@ -34,7 +34,10 @@ Gesticulate.Geometry = function() {
       } else if(arguments[0] instanceof Gesticulate.Geometry.Point) {
         return arguments[0];
       } else {
-        return null;
+        throw({
+          name: 'InvalidArguments',
+          message: 'Only two numbers or one single point object are allowed as arguments.'
+        });
       }
     }
   };
