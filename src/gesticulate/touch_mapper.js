@@ -55,7 +55,7 @@ Gesticulate.TouchMapper = function(recognizers, mode) {
   /**
    * Gesticulate.TouchMapper#recognizerFor(touch) -> Gesticulate.Recognizer.Base | ...
    * Returns the mapped recognizer for the given touch. As long as the
-   * mapper isn't satisfied or there is no recognizer for this touch 
+   * mapper isn't satisfied or there is no recognizer for this touch
    * it returns Gesticulate.Recognizer.Base as a null recognizer (which always fails).
    **/
   this.recognizerFor = function(touch) {

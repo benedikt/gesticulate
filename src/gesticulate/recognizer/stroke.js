@@ -68,4 +68,4 @@ Gesticulate.Recognizer.Stroke = function (_template, _threshold, _options) {
   };
 };
 
-Gesticulate.Recognizer.Stroke.prototype = new Gesticulate.Recognizer.Base(); 
+Gesticulate.Recognizer.Stroke.prototype = new Gesticulate.Recognizer.Base();
