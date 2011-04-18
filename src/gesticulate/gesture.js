@@ -1,8 +1,10 @@
 /**
  * class Gesticulate.Gesture
  **/
-Gesticulate.Gesture = function (recognizer) {
-  var touchMapper = new Gesticulate.TouchMapper(recognizer, 'horizontal');
+Gesticulate.Gesture = function (recognizer, options) {
+  if(!options) options = {};
+
+  var touchMapper = new Gesticulate.TouchMapper(recognizer, options.mapping);
   this.recognizer = recognizer;
 
   this.update = function(touches) {
