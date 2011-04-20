@@ -26,7 +26,6 @@ Gesticulate.Recognizer.Stroke = function (_template, _threshold, _options) {
     var polylineBox = polyline.boundingBox();
     polyline.translate(-(polylineBox.position.x + polylineBox.width  / 2),
                        -(polylineBox.position.y + polylineBox.height / 2));
-
   };
 
   var normalizeScale = function () {
