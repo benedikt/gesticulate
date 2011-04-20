@@ -16,35 +16,42 @@ Gesticulate.Language.StrokeRecognizerBuilder = function(stroke) {
   this.doesRespectScale = function() {
     checkOption('scaleInvariant', 'respect scale');
     options.scaleInvariant = false;
+    return this;
   };
 
   this.doesNotRespectScale = function() {
     checkOption('scaleInvariant', 'respect scale');
     options.scaleInvariant = true;
+    return this;
   };
 
   this.doesRespectRotation = function() {
     checkOption('rotationInvariant', 'respect rotation');
     options.rotationInvariant = false;
+    return this;
   };
 
   this.doesNotRespectRotation = function() {
     checkOption('rotationInvariant', 'respect rotation');
     options.rotationInvariant = true;
+    return this;
   };
 
   this.doesRespectPosition = function() {
     checkOption('positionInvariant', 'respect position');
     options.positionInvariant = false;
+    return this;
   };
 
   this.doesNotRespectPosition = function() {
     checkOption('positionInvariant', 'respect position');
     options.positionInvariant = true;
+    return this;
   };
 
   this.withThresholdOf = function(_threshold) {
     threshold = _threshold;
+    return this;
   };
 
   this.build = function() {
