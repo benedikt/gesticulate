@@ -29,4 +29,4 @@ Gesticulate.Recognizer.Stay = function (x, y, tolerance) {
   };
 };
 
-Gesticulate.Recognizer.Point.prototype = new Gesticulate.Recognizer.Base();
+Gesticulate.Recognizer.Stay.prototype = new Gesticulate.Recognizer.Base();
