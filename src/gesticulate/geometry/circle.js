@@ -33,6 +33,10 @@ Gesticulate.Geometry.Circle = function(x, y, r) {
     return new Gesticulate.Geometry.Rectangle(this.center.x - this.radius, this.center.y - this.radius, this.radius * 2, this.radius * 2);
   };
 
+  this.clone = function() {
+    return new Gesticulate.Geometry.Circle(this.center.x, this.center.y, this.radius);
+  };
+
   /**
    * Gesticulate.Geometry.Circle#translate(delta_x, delta_y) -> this
    **/

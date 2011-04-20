@@ -39,6 +39,10 @@ Gesticulate.Geometry.Point = Gesticulate.Geometry.Vector = function (x, y) {
     return Math.sqrt(this.x * this.x + this.y * this.y);
   };
 
+  this.clone = function() {
+    return new Gesticulate.Geometry.Point(this.x, this.y);
+  };
+
   this.translate = function(delta_x, delta_y) {
     this.x += delta_x;
     this.y += delta_y;

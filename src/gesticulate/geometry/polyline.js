@@ -44,7 +44,7 @@ Gesticulate.Geometry.Polyline = function () {
   this.clone = function() {
     var polyline = new Gesticulate.Geometry.Polyline();
     for(var i = 0; i < this.points.length; i++) {
-      polyline.addPoint(new Gesticulate.Geometry.Point(this.points[i].x, this.points[i].y));
+      polyline.addPoint(this.points[i].clone());
     }
     return polyline;
   };

@@ -38,6 +38,10 @@ Gesticulate.Geometry.Line = function(from_x, from_y, to_x, to_y) {
   };
 
 
+  this.clone = function() {
+    return new Gesticulate.Geometry.Line(this.from.x, this.from.y, this.to.x, this.to.y);
+  };
+
   /**
    * Gesticulate.Geometry.Line#translate(delta_x, delta_y) -> this
    **/

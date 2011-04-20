@@ -26,6 +26,13 @@ Gesticulate.Geometry.Rectangle = function (x, y, width, height) {
   };
 
   /**
+   * Gesticulate.Geometry.Rectangle#clone() -> Gesticulate.Geometry.Rectangle
+   **/
+  this.clone = function() {
+    return new Gesticulate.Geometry.Rectangle(this.position.x, this.position.y, this.width, this.height);
+  };
+
+  /**
    * Gesticulate.Geometry.Rectangle#translate(delta_x, delta_y) -> this
    **/
   this.translate = function(delta_x, delta_y) {
