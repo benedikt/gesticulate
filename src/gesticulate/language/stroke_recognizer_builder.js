@@ -4,7 +4,7 @@ Gesticulate.Language.StrokeRecognizerBuilder = function(stroke) {
   var options = {};
 
   var checkOption = function(option, message) {
-    if(options[option]) {
+    if(options[option] !== undefined) {
       throw 'The object is already set to ' + ((options[option] === false) ? '' : 'not') + ' ' + message;
     }
   };
