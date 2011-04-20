@@ -1,10 +1,11 @@
 Gesticulate.Language.RecognizerBuilder = function(name) {
-  var stroke;
+  var recognizer;
 
   this.name = name;
 
   this.move = this.moves = function () {
-    stroke = new Gesticulate.Language.LineBuilder();
+    var stroke = new Gesticulate.Language.LineBuilder();
+    recognizer = new Gesticulate.Language.StrokeRecognizerBuilder(stroke);
     return stroke;
   };
 
@@ -13,22 +14,33 @@ Gesticulate.Language.RecognizerBuilder = function(name) {
     for(var i = 1; i < arguments.length; i += 2) {
       points.push(new Gesticulate.Geometry.Point(arguments[i - 1], arguments[i]));
     }
-    stroke = new Gesticulate.Geometry.Polyline(points);
+
+    var stroke = new Gesticulate.Geometry.Polyline(points);
+    recognizer = new Gesticulate.Language.StrokeRecognizerBuilder(stroke);
   };
 
-  this.describes = function(letter) {
-    stroke = new Gesticulate.Language.LetterStrokeBuilder(letter);
+  this.describesA = this.describesAn = this.describes = function(letter) {
+    var stroke = new Gesticulate.Language.LetterStrokeBuilder(letter);
+    recognizer = new Gesticulate.Language.StrokeRecognizerBuilder(stroke);
+    return stroke;
+  };
+
+  this.stays = function() {
+    recognizer = new Gesticulate.Language.StayRecognizerBuilder(letter);
+    return recognizer;
   };
 
   this.circles = function() {
-    stroke = new Gesticulate.Recognizer.Stroke(new Gesticulate.Geometry.Circle(0, 0));
+    var stroke = new Gesticulate.Language.CircleBuilder();
+    recognizer = new Gesticulate.Language.StrokeRecognizerBuilder(stroke);
+    return stroke;
   };
 
   this.build = function() {
-    if(stroke && stroke.build instanceof Function) {
-      stroke = stroke.build();
+    if(recognizer && recognizer.build instanceof Function) {
+      recognizer = recognizer.build();
     }
 
-    return new Gesticulate.Recognizer.Stroke(stroke);
+    return recognizer;
   };
 };
