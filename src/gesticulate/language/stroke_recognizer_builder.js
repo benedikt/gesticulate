@@ -9,9 +9,7 @@ Gesticulate.Language.StrokeRecognizerBuilder = function(stroke) {
     }
   };
 
-  this.and = function() {
-    return this;
-  };
+  this.and = this;
 
   this.doesRespectScale = function() {
     checkOption('scaleInvariant', 'respect scale');
