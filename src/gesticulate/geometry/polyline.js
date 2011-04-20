@@ -14,10 +14,7 @@ Gesticulate.Geometry.Polyline = function () {
   if(arguments.length == 1) {
     this.points = arguments[0];
   } else if((arguments.length % 2) !== 0) {
-    throw({
-      name: 'InvalidArguments',
-      message: 'Only an argument count of multiples of two are allowed.'
-    });
+    throw 'Only an argument count of multiples of two are allowed.';
   } else {
     for(var i = 0; i < arguments.length; i += 2) {
       this.points.push(new Gesticulate.Geometry.Point(arguments[i], arguments[i+1]));
