@@ -16,7 +16,7 @@ Gesticulate.Language.Gesture = function() {
     options.mapping = 'timing';
   };
 
-  this.finger = function(name) {
+  this.finger = this.touch = this.nose = function(name) {
     if(!name) { name = recognizer_builders.length; }
 
     var recognizer = new Gesticulate.Language.RecognizerBuilder(name);
