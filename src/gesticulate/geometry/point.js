@@ -8,7 +8,6 @@
  * - y (number): The point's y coordinate
  **/
 Gesticulate.Geometry.Point = Gesticulate.Geometry.Vector = function (x, y) {
-  var self = this;
   this.x = x;
   this.y = y;
 
