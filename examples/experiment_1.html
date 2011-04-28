@@ -29,7 +29,7 @@ var element = document.getElementById('thingy');
 Gesticulate.setup({ simulate: true });
 
 Gesticulate.buildGesture('swipe', function(gesture) {
-  gesture.finger().moves({ from: 'left', to: 'right' });
+  gesture.finger().moves().right().and.doesNotRespectScale();
 });
 
 Gesticulate.observe(element, 'swipe', function() {

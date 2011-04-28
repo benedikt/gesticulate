@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Experiment 7</title>
+  <script src="../lib/prototype/prototype.js"></script>
+  <script src="../build/gesticulate.js"></script>
+  <style type="text/css">
+    #thingy {
+      display: block;
+      width: 600px;
+      height: 300px;
+      background: #ccc;
+      line-height: 300px;
+      color: #fff;
+      font-size: 30px;
+      font-family: sans-serif;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+<div id="thingy">Stay with left, V with right</div>
+
+<script type="text/javascript">
+
+function preventDefault(event) { event.preventDefault(); }
+document.addEventListener('touchstart', preventDefault, false);
+document.addEventListener('touchmove',  preventDefault, false);
+document.addEventListener('touchend',   preventDefault, false);
+
+var element = document.getElementById('thingy');
+
+Gesticulate.setup();
+
+Gesticulate.buildGesture('example', function(gesture) {
+  //gesture.finger().moves({ from: 'left', to: 'right' });
+  //gesture.finger().moves({ from: 'left', to: 'right' });
+  gesture.isHorizontal();
+  gesture.finger().follows(0, 0, 100, 100, 200, 0);
+  gesture.finger().stays().withToleranceOf(50);
+});
+
+var original = element.innerHTML;
+
+Gesticulate.observe(element, 'example', function(recognized) {
+  element.update(recognized ? "Yay! Recognized it! :)" : "Nope. Didn't recognize it! :(");
+  (function() { element.update(original); }).delay(1);
+}, true);
+
+</script>
+</body>
+</html>

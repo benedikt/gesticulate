@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Experiment 8</title>
+  <script src="../lib/prototype/prototype.js"></script>
+  <script src="../build/gesticulate.js"></script>
+  <style type="text/css">
+    #thingy {
+      display: block;
+      width: 800px;
+      height: 300px;
+      background: #ccc;
+      line-height: 300px;
+      color: #fff;
+      font-size: 30px;
+      font-family: sans-serif;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+<div id="thingy">Stay with left and move up with two on the right</div>
+
+<script type="text/javascript">
+
+function preventDefault(event) { event.preventDefault(); }
+document.addEventListener('touchstart', preventDefault, false);
+document.addEventListener('touchmove',  preventDefault, false);
+document.addEventListener('touchend',   preventDefault, false);
+
+var element = document.getElementById('thingy');
+
+Gesticulate.setup();
+
+//var line = new Gesticulate.Geometry.Line(0, 0, 0, -1);
+//var opts = { scaleInvariant: true };
+//var gesture = new Gesticulate.Gesture([
+//  new Gesticulate.Recognizer.Stay(),
+//  new Gesticulate.Recognizer.Stroke(line, opts),
+//  new Gesticulate.Recognizer.Stroke(line, opts)
+//], { mapping: 'horizontal' });
+//
+//Gesticulate.registerGesture('stay-two-up', gesture);
+
+Gesticulate.buildGesture('stay-two-up', function(gesture) {
+  gesture.isHorizontal();
+  gesture.finger(1).stays();
+  gesture.finger(2).moves().up().and.doesNotRespectScale();
+  gesture.finger(3).moves().up().and.doesNotRespectScale();
+});
+
+var original = element.innerHTML;
+
+Gesticulate.observe(element, 'stay-two-up', function(recognized) {
+  element.update(recognized ? "Yay! Recognized it! :)" : "Nope. Didn't recognize it! :(");
+  (function() { element.update(original); }).delay(1);
+}, true);
+
+</script>
+</body>
+</html>
