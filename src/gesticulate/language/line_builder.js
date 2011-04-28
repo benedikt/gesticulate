@@ -11,16 +11,28 @@ Gesticulate.Language.LineBuilder = function() {
     return this;
   };
 
-  this.horizontal = function() {
+  this.right = function() {
+    line.from = new Gesticulate.Geometry.Point(0, 0);
     line.to   = new Gesticulate.Geometry.Point(1, 0);
+    return this;
   };
 
-  this.vertical = function() {
+  this.down = function() {
+    line.from = new Gesticulate.Geometry.Point(0, 0);
     line.to   = new Gesticulate.Geometry.Point(0, 1);
+    return this;
   };
 
-  this.diagonal = function() {
-    line.from = new Gesticulate.Geometry.Point(1, 1);
+  this.left = function() {
+    line.from = new Gesticulate.Geometry.Point(0, 0);
+    line.to   = new Gesticulate.Geometry.Point(-1, 0);
+    return this;
+  };
+
+  this.up = function() {
+    line.from = new Gesticulate.Geometry.Point(0, 0);
+    line.to   = new Gesticulate.Geometry.Point(0, -1);
+    return this;
   };
 
   this.build = function() {

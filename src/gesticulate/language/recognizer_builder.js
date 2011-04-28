@@ -6,6 +6,7 @@ Gesticulate.Language.RecognizerBuilder = function(name) {
   this.move = this.moves = function () {
     var stroke = new Gesticulate.Language.LineBuilder();
     recognizer = new Gesticulate.Language.StrokeRecognizerBuilder(stroke);
+    stroke.__proto__ = recognizer;
     return stroke;
   };
 
@@ -17,30 +18,29 @@ Gesticulate.Language.RecognizerBuilder = function(name) {
 
     var stroke = new Gesticulate.Geometry.Polyline(points);
     recognizer = new Gesticulate.Language.StrokeRecognizerBuilder(stroke);
+    return recognizer;
   };
 
   this.describesA = this.describesAn = this.describes = function(letter) {
     var stroke = new Gesticulate.Language.LetterStrokeBuilder(letter);
     recognizer = new Gesticulate.Language.StrokeRecognizerBuilder(stroke);
+    stroke.__proto__ = recognizer;
     return stroke;
   };
 
   this.stays = function() {
-    recognizer = new Gesticulate.Language.StayRecognizerBuilder(letter);
+    recognizer = new Gesticulate.Language.StayRecognizerBuilder();
     return recognizer;
   };
 
   this.circles = function() {
     var stroke = new Gesticulate.Language.CircleBuilder();
     recognizer = new Gesticulate.Language.StrokeRecognizerBuilder(stroke);
+    stroke.__proto__ = recognizer;
     return stroke;
   };
 
   this.build = function() {
-    if(recognizer && recognizer.build instanceof Function) {
-      recognizer = recognizer.build();
-    }
-
-    return recognizer;
+    return recognizer.build();
   };
 };

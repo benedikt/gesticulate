@@ -13,6 +13,6 @@ Gesticulate.Language.StayRecognizerBuilder = function() {
   };
 
   this.build = function() {
-    return new Gesticulate.Recognizer.Stay(x, y, tolerance);
+    return new Gesticulate.Recognizer.Stay(tolerance, x, y);
   };
 };

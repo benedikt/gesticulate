@@ -1,8 +1,5 @@
-Gesticulate.Language.Gesture = function() {
-  var options = {
-    mapping: 'horizontal'
-  };
-  var recognizer_builders = [];
+Gesticulate.Language.GestureBuilder = function() {
+  var options = {}, recognizer_builders = [];
 
   this.isHorizontal = function() {
     options.mapping = 'horizontal';
@@ -18,10 +15,8 @@ Gesticulate.Language.Gesture = function() {
 
   this.finger = this.touch = this.nose = function(name) {
     if(!name) { name = recognizer_builders.length; }
-
     var recognizer = new Gesticulate.Language.RecognizerBuilder(name);
     recognizer_builders.push(recognizer);
-
     return recognizer;
   };
 

@@ -1,6 +1,4 @@
 Gesticulate.Language.StrokeRecognizerBuilder = function(stroke) {
-  var threshold;
-
   var options = {};
 
   var checkOption = function(option, message) {
@@ -9,7 +7,7 @@ Gesticulate.Language.StrokeRecognizerBuilder = function(stroke) {
     }
   };
 
-  this.and = this;
+  this.and = this.it = this;
 
   this.doesRespectScale = function() {
     checkOption('scaleInvariant', 'respect scale');
@@ -47,8 +45,8 @@ Gesticulate.Language.StrokeRecognizerBuilder = function(stroke) {
     return this;
   };
 
-  this.withThresholdOf = function(_threshold) {
-    threshold = _threshold;
+  this.withThresholdOf = function(threshold) {
+    options.threshold = threshold;
     return this;
   };
 
@@ -57,6 +55,6 @@ Gesticulate.Language.StrokeRecognizerBuilder = function(stroke) {
       stroke = stroke.build();
     }
 
-    return new Gesticulate.Recognizer.Stroke(stroke, threshold, options);
+    return new Gesticulate.Recognizer.Stroke(stroke, options);
   };
 };
