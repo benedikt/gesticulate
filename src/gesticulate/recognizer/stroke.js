@@ -1,31 +1,29 @@
 /**
  * class Gesticulate.Recognizer.Stroke < Gesticulate.Recognizer.Base
  **/
-Gesticulate.Recognizer.Stroke = function (_template, _threshold, _options) {
-  Gesticulate.Recognizer.Base.apply(this);
+Gesticulate.Recognizer.Stroke = function (_template, _options) {
+  Gesticulate.Recognizer.Base.call(this);
 
   var options = Gesticulate.Util.extend({
     positionInvariant: true,
     scaleInvariant: false,
-    rotationInvariant: false
+    rotationInvariant: false,
+    threshold: 0.3
   }, _options || {});
 
   var polyline = new Gesticulate.Geometry.Polyline(),
-      template = _template,
-      threshold = _threshold || 0.3;
+      template = _template;
 
   var distanceToTemplate = function () {
     return polyline.similarityDistanceTo(template);
   };
 
   var normalizePositions = function () {
-    var templateBox = template.boundingBox();
-    template.translate(-(templateBox.position.x + templateBox.width  / 2),
-                       -(templateBox.position.y + templateBox.height / 2));
+    var templateCenter = template.boundingBox().center();
+    template.translate(-templateCenter.x, -templateCenter.y);
 
-    var polylineBox = polyline.boundingBox();
-    polyline.translate(-(polylineBox.position.x + polylineBox.width  / 2),
-                       -(polylineBox.position.y + polylineBox.height / 2));
+    var polylineCenter = polyline.boundingBox().center();
+    polyline.translate(-polylineCenter.x, -polylineCenter.y);
   };
 
   var normalizeScale = function () {
@@ -55,11 +53,11 @@ Gesticulate.Recognizer.Stroke = function (_template, _threshold, _options) {
   };
 
   this.recognize = function() {
-      if(options.positionInvariant || options.rotationInvariant) { normalizePositions(); }
-      if(options.scaleInvariant) { normalizeScale(); }
-      if(options.rotationInvariant) { optimalRotation(); }
+    if(options.positionInvariant) { normalizePositions(); }
+    if(options.scaleInvariant) { normalizeScale(); }
+    if(options.rotationInvariant) { optimalRotation(); }
 
-      return distanceToTemplate() < (threshold * template.boundingBox().diagonale());
+    return distanceToTemplate() < (options.threshold * template.boundingBox().diagonale());
   };
 
   this.reset = function() {
