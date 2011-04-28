@@ -33,11 +33,15 @@ var Gesticulate = function() {
     } else if(/^touch(start|move|end)$/.match(event.type)) {
       touches = [];
 
+      var eventType = 'move';
+
       switch(event.type) {
         case 'touchstart':
           activeTouches += event.changedTouches.length;
+          eventType = 'start';
           break;
         case 'touchend':
+          eventType = 'end';
           activeTouches -= event.changedTouches.length;
           break;
       }
@@ -85,7 +89,7 @@ var Gesticulate = function() {
      **/
     buildGesture: function(name, block) {
       if(block instanceof Function) {
-        gesture = new Gesticulate.Language.Gesture();
+        gesture = new Gesticulate.Language.GestureBuilder();
         block.call(this, gesture);
         gestures[name] = gesture.build();
       }
