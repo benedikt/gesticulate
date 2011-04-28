@@ -21,6 +21,13 @@ Gesticulate.Geometry.Rectangle = function (x, y, width, height) {
     return Math.sqrt(this.width * this.width + this.height * this.height);
   };
 
+  this.center = function() {
+    return new Gesticulate.Geometry.Point(
+      this.position.x + this.width / 2,
+      this.position.y + this.height / 2    
+    );
+  };
+
   this.boundingBox = function() {
     return this;
   };
