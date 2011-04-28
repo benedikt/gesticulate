@@ -33,8 +33,8 @@ describe('Gesticulate', function() {
       expect(Gesticulate.observe).toBeDefined();
     });
 
-    it('should require three arguments', function() {
-      expect(Gesticulate.observe.length).toBe(3);
+    it('should require four arguments', function() {
+      expect(Gesticulate.observe.length).toBe(4);
     });
 
   });
@@ -45,8 +45,8 @@ describe('Gesticulate', function() {
       expect(Gesticulate.fire).toBeDefined();
     });
 
-    it('should require an element and a gesture as arguments', function() {
-      expect(Gesticulate.fire.length).toBe(2);
+    it('should require an element, a gesture and a boolean as arguments', function() {
+      expect(Gesticulate.fire.length).toBe(3);
     });
 
   });
